@@ -116,7 +116,7 @@ Open and run cells in order:
 
 ---
 
-## Algorithm Settings (As Required)
+## Algorithm Settings 
 
 ### Value Iteration
 
@@ -137,3 +137,4 @@ Open and run cells in order:
 
 ```
 ```
+
