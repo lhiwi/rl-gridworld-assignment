@@ -20,10 +20,14 @@ Both environments use:
 
 .
 ├── notebooks/
+
 │   ├── Value_Iteration.ipynb
+
 │   └── Q_Learning.ipynb
-├── src/                  # (optional) python scripts if included
+├── src/                  
+
 ├── requirements.txt
+
 └── README.md
 
 ````
@@ -135,6 +139,5 @@ Open and run cells in order:
 ---
 
 
-```
-```
+
 
