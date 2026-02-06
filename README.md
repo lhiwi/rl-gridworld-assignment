@@ -1,16 +1,62 @@
 ```md
-# RL Gridworld Assignment (Value Iteration + Q-Learning)
+# Reinforcement Learning – Gridworld Assignment
 
-This repository contains notebook-based implementations of two reinforcement learning algorithms in a **5x5 Gridworld**:
+This repository contains the solution for an individual reinforcement learning assignment focused on understanding and implementing **planning** and **learning** algorithms in a small gridworld environment.
 
-1) **Value Iteration** (MDP planning, fully observable)  
-2) **Q-Learning** (model-free RL)
+The assignment is implemented entirely in **Jupyter notebooks** and covers two core reinforcement learning methods applied to the same environment for comparison and understanding.
 
-Both environments use:
-- Actions: **Up, Down, Left, Right**
-- Reward: **+10** for reaching the goal, **-1** for every other step
-- Goal state: **(4, 4)** (bottom-right)
-- Terminal: goal state ends the episode
+---
+
+## Assignment Overview
+
+The goal of this assignment is to model a **5×5 Gridworld** as a reinforcement learning problem and solve it using:
+
+1. **Value Iteration** – a planning algorithm for fully observable Markov Decision Processes (MDPs)
+2. **Q-Learning** – a model-free reinforcement learning algorithm based on trial-and-error interaction
+
+Both exercises use the same environment to highlight the conceptual and practical differences between planning with a known model and learning from experience.
+
+---
+
+## Environment Description
+
+- Grid size: **5 × 5**
+- State space: each cell in the grid
+- Action space: **Up, Down, Left, Right**
+- Transition dynamics: deterministic, with boundary constraints
+- Reward structure:
+  - **+10** for reaching the goal state
+  - **–1** for every other step
+- Goal state: bottom-right cell **(4, 4)**
+- Terminal state: the goal state ends the episode
+- Discount factor:
+  - Value Iteration: **γ = 0.9**
+  - Q-Learning: **γ = 0.9**
+- Learning rate (Q-Learning): **α = 0.5**
+
+---
+
+## Implemented Exercises
+
+### 1. Value Iteration (MDP Planning)
+
+The value iteration notebook formulates the gridworld as a fully observable MDP and iteratively applies the Bellman optimality update until convergence.  
+After convergence, the optimal value function and the corresponding optimal policy are extracted and displayed in grid form.
+
+**Notebook:**  
+- `Value_Iteration.ipynb`
+
+---
+
+### 2. Q-Learning (Model-Free Reinforcement Learning)
+
+The Q-learning notebook implements a tabular Q-learning agent that learns optimal action values through repeated interaction with the environment.  
+The agent uses an epsilon-greedy policy for exploration and updates the Q-table using the standard temporal-difference update rule.
+
+After training for a fixed number of episodes, the learned Q-values and the greedy policy induced by the Q-table are printed.
+
+**Notebook:**  
+- `Q_Learning.ipynb`
 
 ---
 
@@ -18,126 +64,13 @@ Both environments use:
 
 ```
 
-.
+rl-gridworld-assignment/
 ├── notebooks/
-
 │   ├── Value_Iteration.ipynb
-
 │   └── Q_Learning.ipynb
-├── src/                  
-
 ├── requirements.txt
-
 └── README.md
 
-````
-
-> Main deliverables are the `.ipynb` notebooks in `notebooks/`.
-
----
-
-## Requirements
-
-- Python 3.9+ (3.10/3.11 recommended)
-- Git
-- VS Code (recommended) with:
-  - Python extension
-  - Jupyter extension
-
----
-
-## Setup (VS Code + Virtual Environment)
-
-### 1) Clone the repository
-```bash
-git clone https://github.com/lhiwi/rl-gridworld-assignment.git
-cd rl-gridworld-assignment
-code .
-````
-
-### 2) Create and activate a virtual environment
-
-**Windows PowerShell**
-
-```bash
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
 ```
-
-If activation is blocked:
-
-```bash
-Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
-.\.venv\Scripts\Activate.ps1
-```
-
-**macOS/Linux**
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-### 3) Install dependencies
-
-```bash
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
-
-If `requirements.txt` is missing, install manually:
-
-```bash
-pip install numpy ipykernel
-```
-
-### 4) Register the venv as a Jupyter kernel (recommended)
-
-```bash
-python -m ipykernel install --user --name rl-gridworld-venv --display-name "Python (rl-gridworld-venv)"
-```
-
-### 5) Select the kernel in VS Code
-
-Open a notebook → top-right **Kernel** → choose:
-**Python (rl-gridworld-venv)**
-
----
-
-## Running the Notebooks
-
-Open and run cells in order:
-
-* `notebooks/Value_Iteration.ipynb`
-
-  * Computes **optimal value function** (V^*)
-  * Prints **optimal policy** (\pi^*) after convergence
-
-* `notebooks/Q_Learning.ipynb`
-
-  * Trains Q-learning for a **fixed number of episodes**
-  * Prints the learned **Q-table** and greedy policy
-
----
-
-## Algorithm Settings 
-
-### Value Iteration
-
-* Discount factor: **γ = 0.9**
-* Convergence threshold: small tolerance (e.g., `1e-6`)
-* Deterministic transitions with wall-bounce (stay in place if action goes off-grid)
-
-### Q-Learning
-
-* Learning rate: **α = 0.5**
-* Discount factor: **γ = 0.9**
-* Q-table initialized to **zeros**
-* Epsilon-greedy exploration used for action selection (typical RL training setup)
-
-
----
-
-
 
 
